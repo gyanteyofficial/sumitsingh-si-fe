@@ -1,0 +1,91 @@
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a routerLink="/" class="logo" (click)="closeMenu()">
+        <span class="logo-text">Sumit Singh | My Portfolio</span>
+        <!-- <svg class="logo-doodle" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5,10 Q15,5 30,10 T55,10" stroke="#e07a5f" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg> -->
+      </a>
+      
+      <ul class="nav-links" [class.open]="isMenuOpen">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a></li>
+           
+        <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a></li>
+        <li><a routerLink="/worksamples" routerLinkActive="active" (click)="closeMenu()">Work Samples</a></li>
+        <li><a routerLink="/blogs" routerLinkActive="active" (click)="closeMenu()">Blogs</a></li>
+        <li><a routerLink="/courses" routerLinkActive="active" (click)="closeMenu()">Courses</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+        <li><a routerLink="/resume" routerLinkActive="active" (click)="closeMenu()">Resume</a></li>
+        <li><a routerLink="/techlead" routerLinkActive="active" (click)="closeMenu()">Tech Lead</a></li>
+      </ul>
+      
+
+       <div class="header-social-links" aria-label="Social links">
+        <a href="https://github.com/sumitsinghofficial" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/sumitsingh27/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@sumitsingh.si.official" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.376.55A3.016 3.016 0 0 0 .502 6.186C0 8.055 0 12 0 12s0 3.945.502 5.814a3.016 3.016 0 0 0 2.122 2.136C4.495 20.5 12 20.5 12 20.5s7.505 0 9.376-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.945 24 12 24 12s0-3.945-.502-5.814zM9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/sumitsingh.si.official" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="17.5" cy="6.6" r="1.1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="mailto:sumitsingh@sumitsingh.si" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+        <a class="resume-download" href="/Sumit-Singh-Resume.txt" download="Sumit-Singh-Resume.txt" aria-label="Download résumé" title="Download résumé">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v4h14v-4"/>
+          </svg>
+        </a>
+
+        <!-- <a class="resume-nav" [href]="resumeHref" download="Sumit-Singh-Resume.txt">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v8m0 0 3-3M8 9 5 6M2 11v3h12v-3"/></svg> Resume
+        </a> -->
+      </div> 
+      <!-- <div class="nav-actions">
+        <a class="social" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1 1.74-.74 2.03-1.18.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.12 2.98.72.79 1.15 1.8 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
+        </a>
+        <a class="social linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        <a class="social" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.52A3 3 0 0 0 .5 6.2C0 8.06 0 12 0 12s0 3.94.5 5.8a3 3 0 0 0 2.12 2.12c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 0 0 2.12-2.12C24 15.94 24 12 24 12s0-3.94-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+        </a>
+        <a class="resume-nav" [href]="resumeHref" download="Sumit-Singh-Resume.txt">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v8m0 0 3-3M8 9 5 6M2 11v3h12v-3"/></svg> Resume
+        </a>
+      </div> -->
+
+       <!-- <div>
+        <a class="resume-nav" [href]="resumeHref" download="Sumit-Singh-Resume.txt">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v8m0 0 3-3M8 9 5 6M2 11v3h12v-3"/></svg> Resume
+        </a>
+      </div>  -->
+
+      <!-- 
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      -->
+    </nav>
+  </div>
+</header>

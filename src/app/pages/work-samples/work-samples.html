@@ -1,0 +1,170 @@
+<div class="showcase-container">
+
+  <!-- Page Heading -->
+  <header class="showcase-header">
+
+    <div class="heading-content">
+      <span class="heading-label">
+        <span>💼</span> My Work
+      </span>
+
+      <h1>My <span>Projects</span></h1>
+
+      <p>
+        Explore my work, technical implementations and solutions.
+      </p>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="toolbar">
+
+      <div class="category-filters">
+        <button
+          *ngFor="let category of categories"
+          [class.active]="selectedCategory === category"
+          (click)="selectCategory(category)">
+
+          {{ category }}
+
+        </button>
+      </div>
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search projects..."
+          [(ngModel)]="searchText">
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- Project List -->
+  <section class="project-list">
+
+    <article
+      class="project-card"
+      *ngFor="let project of filteredProjects">
+
+      <!-- Project Illustration -->
+      <div class="project-image">
+
+        <div class="illustration-icon">
+          {{ project.icon }}
+        </div>
+
+      </div>
+
+      <!-- Project Information -->
+      <div class="project-content">
+
+        <!-- Title and Category -->
+        <div class="project-heading">
+
+          <div>
+            <span
+              class="category-badge"
+              [ngClass]="project.categoryClass">
+              {{ project.category }}
+            </span>
+
+            <h2>{{ project.name }}</h2>
+          </div>
+
+        </div>
+
+        <!-- Requirement and Result -->
+        <div class="project-details">
+
+          <div class="detail-block">
+
+            <h3>
+              <span class="status-icon requirement-icon">!</span>
+              Requirement
+            </h3>
+
+            <p>{{ project.requirement }}</p>
+
+          </div>
+
+          <div class="detail-block result-block">
+
+            <h3>
+              <span class="status-icon result-icon">✓</span>
+              Result
+            </h3>
+
+            <p>{{ project.result }}</p>
+
+          </div>
+
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="technology-section">
+
+          <div class="tech-heading">
+            <span>◈</span>
+            <strong>Tech Stack:</strong>
+          </div>
+
+          <div class="tech-list">
+
+            <span
+              class="tech-badge"
+              *ngFor="let tech of project.techStack">
+              {{ tech }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Project Actions -->
+      <div class="project-actions">
+
+        <a
+          *ngIf="project.liveDemo"
+          [href]="project.liveDemo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-button demo-button">
+          ↗ Live Demo
+        </a>
+
+        <a
+          *ngIf="project.github"
+          [href]="project.github"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-button github-button">
+          ◉ GitHub
+        </a>
+
+        <a
+          *ngIf="project.documentation"
+          [href]="project.documentation"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-button docs-button">
+          ▤ Documentation
+        </a>
+
+      </div>
+
+    </article>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredProjects.length === 0">
+      <h3>No projects found</h3>
+      <p>Try searching with another project name or technology.</p>
+    </div>
+
+  </section>
+
+</div>

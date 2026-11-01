@@ -1,0 +1,90 @@
+<div class="study-page">
+  <header class="page-intro">
+    <p class="eyebrow">A little practice, one question at a time</p>
+    <h1 class="page-title"><span class="wavy-underline">Interview Questions</span></h1>
+    <p class="intro-copy">
+      A study desk for backend engineering interviews. Choose a topic to open its question set.
+    </p>
+  </header>
+
+  <nav class="topic-picker" aria-label="Interview question topics">
+    <p class="picker-label">Pick a subject</p>
+    <div class="topic-list" role="group" aria-label="Choose a question topic">
+      <button
+        *ngFor="let topic of topics"
+        type="button"
+        class="topic-button"
+        [class.is-selected]="selectedTopicId === topic.id"
+        [attr.aria-pressed]="selectedTopicId === topic.id"
+        aria-controls="question-content"
+        (click)="selectTopic(topic.id)">
+        <span>{{ topic.label }}</span>
+        <span class="topic-count" [attr.aria-label]="getTopicQuestionCount(topic) + ' questions'">
+          {{ getTopicQuestionCount(topic) }}
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <p class="screen-reader-status" aria-live="polite" aria-atomic="true">
+    {{ selectedTopic.label }} selected. {{ questionCount }} questions.
+  </p>
+
+  <section
+    class="question-sheet"
+    id="question-content"
+  >
+    <div class="sheet-heading">
+      <div>
+        <p class="eyebrow">Study notes</p>
+        <h2 class="sheet-title">{{ selectedTopic.label }}</h2>
+        <p class="topic-description">{{ selectedTopic.description }}</p>
+      </div>
+      <p class="sheet-note">
+        {{ questionCount }} questions · {{ hasAnswers ? 'answers available' : 'questions only' }}
+      </p>
+    </div>
+
+    <div class="section-list">
+      <section class="question-section" *ngFor="let section of selectedTopic.sections; let sectionIndex = index">
+        <h3 class="section-title">
+          <span class="section-index" aria-hidden="true">{{ sectionIndex + 1 }}.</span>
+          <span>{{ section.title }}</span>
+        </h3>
+        <ol class="question-list">
+          <li class="question-item" *ngFor="let question of section.questions">
+            <span class="question-number" aria-hidden="true">{{ question.number }}</span>
+            <div class="question-content">
+              <button
+                *ngIf="question.answer; else questionOnly"
+                type="button"
+                class="question-trigger"
+                [attr.aria-expanded]="isAnswerExpanded(sectionIndex, question.number)"
+                [attr.aria-controls]="answerId(sectionIndex, question.number)"
+                (click)="toggleAnswer(sectionIndex, question.number)">
+                <span class="question-text">{{ question.text }}</span>
+                <span class="answer-cue">
+                  {{ isAnswerExpanded(sectionIndex, question.number) ? 'Hide answer' : 'Click to show answer' }}
+                </span>
+              </button>
+              <ng-template #questionOnly>
+                <p class="question-text">{{ question.text }}</p>
+              </ng-template>
+              <div
+                class="answer-card"
+                *ngIf="question.answer"
+                [hidden]="!isAnswerExpanded(sectionIndex, question.number)"
+                [id]="answerId(sectionIndex, question.number)">
+                <p class="answer-label">Answer</p>
+                <p class="answer-text">{{ question.answer }}</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </section>
+
+  <p class="page-footnote" aria-hidden="true">Made for the margins of your notebook.</p>
+</div>
+

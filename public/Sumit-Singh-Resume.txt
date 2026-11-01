@@ -1,0 +1,11 @@
+Sumit Singh
+Senior Software Engineer | Tech Lead
+
+7.5+ years of experience designing, building, and scaling high-performance applications using Java, Spring Boot and modern cloud technologies.
+
+Core technologies: Java, Spring Boot, Microservices, REST APIs, Angular, React, TypeScript, JavaScript, MySQL, MongoDB, PostgreSQL, Redis, AWS, Docker, Kubernetes, Jenkins.
+
+Experience
+Senior Software Engineer — Current Company | 2021 – Present
+Software Engineer — Previous Company | 2018 – 2021
+Associate Software Engineer — 2016 – 2018

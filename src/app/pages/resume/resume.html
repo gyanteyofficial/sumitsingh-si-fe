@@ -1,0 +1,191 @@
+<div class="resume-builder-shell">
+    <div class="toolbar no-print">
+        <div><strong>Resume editor</strong><span>Click any text to edit. Changes appear in the A4 preview.</span></div>
+        <button type="button" (click)="downloadPdf()">Download PDF</button>
+    </div>
+
+    <main class="resume-pages">
+        <article class="paper page-one">
+            <header class="resume-header">
+                <div class="identity">
+                    <h1 contenteditable="true" (input)="updateText($event, resume, 'name')">{{resume.name}}</h1>
+                    <p class="headline" contenteditable="true" (input)="updateText($event, resume, 'headline')">
+                        {{resume.headline}}</p>
+                </div>
+                <div class="contact">
+                    <p contenteditable="true" (input)="updateText($event, resume, 'phone')">{{resume.phone}}</p>
+                    <p contenteditable="true" (input)="updateText($event, resume, 'email')">{{resume.email}}</p>
+                </div>
+            </header>
+
+            <div class="columns">
+                <aside class="left-column">
+                    <section class="side-section">
+                        <h2>Core Competencies</h2>
+                        <ul class="plain-list">
+                            <li *ngFor="let item of resume.left1; let i = index"><span contenteditable="true"
+                                    (input)="updateItem($event, item, 'title')">{{item.title}}</span><button
+                                    class="remove no-print" (click)="removeItem(resume.left1, i)"
+                                    aria-label="Remove">×</button></li>
+                        </ul>
+                        <button class="add no-print" (click)="addItem(resume.left1, {title:'New competency'})">+ Add
+                            competency</button>
+                    </section>
+                    <section class="side-section">
+                        <h2>Achievements</h2>
+                        <ul>
+                            <li *ngFor="let item of resume.achievements; let i = index"><span contenteditable="true"
+                                    (input)="updateItem($event, resume.achievements, i)">{{item}}</span><button
+                                    class="remove no-print" (click)="removeItem(resume.achievements, i)">×</button></li>
+                        </ul>
+                        <button class="add no-print" (click)="addItem(resume.achievements, 'Add achievement')">+ Add
+                            achievement</button>
+                    </section>
+                </aside>
+
+                <div class="right-column">
+                    <section class="main-section">
+                        <h2>Profile Summary</h2>
+                        <ul>
+                            <li *ngFor="let item of resume.summary; let i = index"><span contenteditable="true"
+                                    (input)="updateItem($event, resume.summary, i)">{{item}}</span><button
+                                    class="remove no-print" (click)="removeItem(resume.summary, i)">×</button></li>
+                        </ul><button class="add no-print"
+                            (click)="addItem(resume.summary, 'Add profile summary point')">+ Add point</button>
+                    </section>
+                    <section class="main-section">
+                        <h2>Technical Skills</h2>
+                        <ul>
+                            <li *ngFor="let item of resume.skills; let i = index"><span contenteditable="true"
+                                    (input)="updateItem($event, resume.skills, i)">{{item}}</span><button
+                                    class="remove no-print" (click)="removeItem(resume.skills, i)">×</button></li>
+                        </ul><button class="add no-print" (click)="addItem(resume.skills, 'New skill category: ') ">+
+                            Add skill</button>
+                    </section>
+                    <section class="main-section experience">
+                        <h2>Work Experience</h2>
+                        <div class="job" *ngFor="let job of resume.jobs; let i = index">
+                            <h3><span contenteditable="true"
+                                    (input)="updateItem($event, job, 'company')">{{job.company}}</span> | <span
+                                    contenteditable="true" (input)="updateItem($event, job, 'role')">{{job.role}}</span>
+                                | <span contenteditable="true"
+                                    (input)="updateItem($event, job, 'dates')">{{job.dates}}</span></h3>
+                            <p><b>Project:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, job, 'project')">{{job.project}}</span> | <b>Client:</b>
+                                <span contenteditable="true"
+                                    (input)="updateItem($event, job, 'client')">{{job.client}}</span></p>
+                            <p><b>Project Summary:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, job, 'summary')">{{job.summary}}</span></p>
+                            <b>Key Highlights:</b>
+                            <ul>
+                                <li *ngFor="let point of job.points; let j = index"><span contenteditable="true"
+                                        (input)="updateItem($event, job.points, j)">{{point}}</span><button
+                                        class="remove no-print" (click)="removeItem(job.points, j)">×</button></li>
+                            </ul>
+                            <p><b>Tech Stack:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, job, 'tech')">{{job.tech}}</span></p>
+                            <button class="add no-print"
+                                (click)="addItem(job.points, 'New responsibility or achievement')">+ Add
+                                highlight</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+
+        <article class="paper page-two">
+            <div class="columns page-two-columns">
+                <aside class="left-column">
+                    <section class="side-section">
+                        <h2>Soft Skills</h2>
+                        <ul class="plain-list">
+                            <li *ngFor="let item of resume.softSkills; let i = index"><span contenteditable="true"
+                                    (input)="updateItem($event, resume.softSkills, i)">{{item}}</span><button
+                                    class="remove no-print" (click)="removeItem(resume.softSkills, i)">×</button></li>
+                        </ul><button class="add no-print" (click)="addItem(resume.softSkills, 'New skill')">+ Add
+                            skill</button>
+                    </section>
+                    <section class="side-section">
+                        <h2>Education</h2>
+                        <p contenteditable="true" (input)="updateText($event, resume, 'education')">{{resume.education}}
+                        </p>
+                    </section>
+                    <section class="side-section">
+                        <h2>Personal Details</h2>
+                        <p *ngFor="let item of resume.personal; let i = index" contenteditable="true"
+                            (input)="updateItem($event, resume.personal, i)">{{item}}</p>
+                    </section>
+                </aside>
+                <div class="right-column">
+                    <section class="main-section">
+                        <div class="job">
+                            <h3 contenteditable="true" (input)="updateItem($event, resume.metlife, 'project')">Project:
+                                {{resume.metlife.project}}</h3>
+                            <p><b>Client:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, resume.metlife, 'client')">{{resume.metlife.client}}</span>
+                            </p>
+                            <p><b>Project Summary:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, resume.metlife, 'summary')">{{resume.metlife.summary}}</span>
+                            </p>
+                            <b>Key Highlights:</b>
+                            <ul>
+                                <li *ngFor="let point of resume.metlife.points; let i = index"><span
+                                        contenteditable="true"
+                                        (input)="updateItem($event, resume.metlife.points, i)">{{point}}</span><button
+                                        class="remove no-print"
+                                        (click)="removeItem(resume.metlife.points, i)">×</button></li>
+                            </ul>
+                            <p><b>Tech Stack:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, resume.metlife, 'tech')">{{resume.metlife.tech}}</span>
+                            </p>
+                        </div>
+                        <div class="job tcs-job">
+                            <h3><span contenteditable="true">Tata Consultancy Services, Gurugram</span> | <span
+                                    contenteditable="true"
+                                    (input)="updateItem($event, resume.tcs, 'dates')">{{resume.tcs.dates}}</span></h3>
+                            <p><b>Project:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, resume.tcs, 'project')">{{resume.tcs.project}}</span>
+                            </p>
+                            <b>Key Projects:</b>
+                            <ul>
+                                <li *ngFor="let point of resume.tcs.points; let i = index"><span contenteditable="true"
+                                        (input)="updateItem($event, resume.tcs.points, i)">{{point}}</span><button
+                                        class="remove no-print" (click)="removeItem(resume.tcs.points, i)">×</button>
+                                </li>
+                            </ul>
+                            <b>Bharat Bill Payment Implementation:</b>
+                            <ul>
+                                <li *ngFor="let point of resume.tcs.billing; let i = index"><span contenteditable="true"
+                                        (input)="updateItem($event, resume.tcs.billing, i)">{{point}}</span><button
+                                        class="remove no-print" (click)="removeItem(resume.tcs.billing, i)">×</button>
+                                </li>
+                            </ul>
+                            <p><b>Tech Stack:</b> <span contenteditable="true"
+                                    (input)="updateItem($event, resume.tcs, 'tech')">{{resume.tcs.tech}}</span></p>
+                        </div>
+                        <div class="job key-results">
+                            <h3>Key Result Areas:</h3>
+                            <ul>
+                                <li contenteditable="true">Software Development: Formulated end-to-end software
+                                    solutions by studying information requirements, working with stakeholders and
+                                    mapping system workflow, data usage and operational processes.</li>
+                                <li contenteditable="true">Network & System Maintenance: Charted product roadmaps
+                                    alongside robust maintenance protocols, teaming up with system administrators and
+                                    engineers to sustain peak network performance.</li>
+                                <li contenteditable="true">Quality Assurance: Guided software quality assurance through
+                                    reviews of product functionality, test plans and documentation, defect mitigation,
+                                    metrics analysis and issue resolution.</li>
+                                <li contenteditable="true">Client Engagement: Gathered business needs through client
+                                    workshops and prepared technical and functional specifications, including
+                                    architecture designs, use cases and deployment scripts.</li>
+                                <li contenteditable="true">Impact Analysis: Evaluated functional, business and technical
+                                    effects of proposed changes on system channels, paving the way for smooth adaptation
+                                    with minimal disruption.</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+</div>
